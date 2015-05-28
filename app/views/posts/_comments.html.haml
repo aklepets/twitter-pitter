@@ -1,0 +1,12 @@
+%h2 Comments
+- @post.comments.each do |comment|
+  %p
+    = comment.text
+    - if current_user && (current_user == comment.user || current_user.admin)
+      = link_to 'Delete', post_comment_path(@post.id, comment.id), method: :delete, confirm: 'Are you sure?', remote: true, disable_with: 'Deleting...'
+  %i
+    = "By #{comment.user.first_name} #{comment.user.last_name}" if comment.user
+    = "#{time_ago_in_words comment.created_at} ago"
+= form_for [@post, @post.comments.build] do |f|
+  %p= f.text_area :text, size: '40x5'
+  %p= f.submit 'Comment'

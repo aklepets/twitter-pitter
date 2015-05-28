@@ -1,0 +1,13 @@
+%h1 Statistics
+%table
+  %tr
+    %th User
+    %th Posts
+    %th Comments
+  - @users.each do |user|
+    %tr
+      %td= "#{user.first_name} #{user.last_name}"
+      %td= user.posts_count
+      %td= user.comments.size
+%br
+= link_to 'Back', root_path

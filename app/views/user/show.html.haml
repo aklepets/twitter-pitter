@@ -1,0 +1,14 @@
+%p#notice= notice
+%p
+  %b Login:
+  = @user.login
+%p
+  %b First name:
+  = @user.first_name
+%p
+  %b Last name:
+  = @user.last_name
+%p
+  %b Admin:
+  = @user.admin
+= link_to 'Back', :back

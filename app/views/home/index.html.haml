@@ -1,0 +1,15 @@
+%h1 Most popular posts
+%table
+  %tr
+    %th Title
+    %th Posted by
+  - @posts.each do |post|
+    %tr
+      %td= link_to post.title, post
+      %td= "#{post.user.first_name} #{post.user.last_name}" if post.user
+%br
+= link_to 'All Posts', posts_path
+|
+= link_to 'New Post', new_post_path
+|
+= link_to 'Statistics', statistics_path

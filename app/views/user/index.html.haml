@@ -1,0 +1,12 @@
+%h1 Users
+%table
+  %tr
+    %th User
+    %th
+  - @users.each do |user|
+    %tr
+      %td= link_to "#{user.first_name} #{user.last_name}", user_path(user)
+      %td= link_to "Destroy", admin_destroy_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } if user != current_user
+%br
+= link_to 'Back', root_path
+

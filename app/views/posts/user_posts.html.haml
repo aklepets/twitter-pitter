@@ -1,0 +1,12 @@
+%h1 My posts
+%table
+  %tr
+    %th Title
+    %th Date
+  - @posts.each do |post|
+    %tr
+      %td= link_to post.title, post
+      %td= post.created_at.to_formatted_s
+%br
+= link_to 'Back', :back
+

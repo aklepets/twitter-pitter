@@ -1,0 +1,14 @@
+%header.navbar.navbar-fixed-top.navbar-inverse
+  .navbar-inner
+    .container
+      = link_to 'TwitterPitter', '/', id: 'logo'
+      %nav
+        %ul.nav.pull-right.navbar-nav
+          - if user_signed_in?
+            %li= link_to 'Users', users_path if current_user.admin
+            %li= link_to 'Your Posts', user_posts_path
+            %li= link_to "#{current_user.first_name} #{current_user.last_name}", edit_user_registration_path
+            %li= link_to 'Sign out', users_sign_out_path
+          - else
+            %li= link_to 'Sign in', users_sign_in_path
+            %li= link_to "Sign up", new_user_registration_path
